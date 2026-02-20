@@ -1,0 +1,139 @@
+🎁 GIFT CARDS - NEW SIMPLIFIED FLOW
+====================================
+
+✅ WHAT CHANGED:
+- Removed all the complex options
+- Now only 2 packages: Starter & Premium
+- Simple 3-step process
+
+📋 HOW IT WORKS:
+================
+
+STEP 1: Choose Package (gift-cards.html)
+-----------------------------------------
+Two options:
+  🌟 Starter Package - KSh 2,500
+     - Gift Card: KSh 2,500
+     - Choose Greeting Card
+     - Choose Flowers
+     - Personal Message
+
+  💎 Premium Package - KSh 5,000 (Most Popular)
+     - Gift Card: KSh 5,000
+     - Choose Greeting Card
+     - Choose Premium Flowers
+     - Personal Message
+     - Gift Wrapping
+
+Click on either package → Goes to cards-flowers.html
+
+STEP 2: View Starter & Choose Items (cards-flowers.html)
+---------------------------------------------------------
+1. You see the starter package display showing:
+   - Package name
+   - Gift card value
+   - "View Cards & Flowers" button
+
+2. Click "View Cards & Flowers" button
+   → Page scrolls down to show:
+   
+   GREETING CARDS (6 options):
+   - Birthday Card - KSh 200
+   - Congratulations Card - KSh 200
+   - Thank You Card - KSh 200
+   - Love Card - KSh 200
+   - Anniversary Card - KSh 200
+   - Blank Card - KSh 200
+   
+   Each card has 2 buttons:
+   [Add to Cart] [Buy]
+
+   FLOWERS (6 options):
+   - Red Roses Bouquet - KSh 1,500
+   - Tulips Bouquet - KSh 1,200
+   - Mixed Bouquet - KSh 1,800
+   - Luxury Arrangement - KSh 2,500
+   - Sunflowers - KSh 1,000
+   - Orchids - KSh 1,300
+   
+   Each flower has 2 buttons:
+   [Add to Cart] [Buy]
+
+3. Two ways to purchase:
+   
+   A) ADD TO CART:
+      - Click "Add to Cart" on any card
+      - Click "Add to Cart" on any flower
+      - Cart appears in bottom-right corner
+      - Shows all items + total
+      - Click "Checkout" button in cart
+   
+   B) BUY NOW:
+      - Click "Buy" on any single item
+      - Goes directly to checkout with that item
+
+STEP 3: Complete Purchase (gift-checkout.html)
+-----------------------------------------------
+1. See order summary with:
+   - Package (Starter or Premium)
+   - Selected items (cards/flowers)
+   - Total amount
+
+2. Fill in form:
+   - Recipient Information (name, email, delivery date)
+   - Your Information (name, email, phone)
+   - Personal Message (optional)
+   - Payment Method (M-Pesa or Card)
+
+3. Click "Complete Purchase"
+   - Shows confirmation
+   - Returns to main shop
+
+🎯 EXAMPLE FLOW:
+================
+
+User Journey 1 (Add to Cart):
+1. Open gift-cards.html
+2. Click "Starter Package" (KSh 2,500)
+3. See starter display
+4. Click "View Cards & Flowers"
+5. Click "Add to Cart" on "Birthday Card" (KSh 200)
+6. Click "Add to Cart" on "Red Roses" (KSh 1,500)
+7. Cart shows: Total KSh 4,200
+8. Click "Checkout" in cart
+9. Fill form and complete purchase
+
+User Journey 2 (Buy Now):
+1. Open gift-cards.html
+2. Click "Premium Package" (KSh 5,000)
+3. See starter display
+4. Click "View Cards & Flowers"
+5. Click "Buy" on "Love Card" (KSh 200)
+6. Goes directly to checkout
+7. Total: KSh 5,200
+8. Fill form and complete purchase
+
+💡 KEY FEATURES:
+================
+
+✓ Simple 2-package choice
+✓ Clear starter display before items
+✓ Smooth scroll to items section
+✓ Add multiple items to cart OR buy single item
+✓ Fixed cart summary in bottom-right
+✓ Clean checkout process
+✓ M-Pesa integration ready
+
+🚀 TO TEST:
+===========
+
+1. Open gift-cards.html
+2. Click "Starter Package"
+3. You should see the starter display
+4. Click "View Cards & Flowers"
+5. Page scrolls down to show all cards and flowers
+6. Try "Add to Cart" on a few items
+7. See cart appear in bottom-right
+8. Click "Checkout" to complete
+
+That's it! Much simpler than before! 🎉

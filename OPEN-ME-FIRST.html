@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine World - Start Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #c90000;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        .emoji {
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-primary {
+            background: #c90000;
+            color: white;
+        }
+        .btn-secondary {
+            background: #4caf50;
+            color: white;
+        }
+        .btn-info {
+            background: #2196F3;
+            color: white;
+        }
+        .status {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .status h3 {
+            color: #c90000;
+            margin-bottom: 10px;
+        }
+        .status ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .status li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .status li:last-child {
+            border-bottom: none;
+        }
+        .check {
+            color: #4caf50;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🍷</div>
+        <h1>Welcome to Wine World!</h1>
+        
+        <p>Your wine e-commerce shop is ready! All issues have been fixed:</p>
+        
+        <div class="status">
+            <h3>✅ What's Fixed:</h3>
+            <ul>
+                <li><span class="check">✓</span> Wine products now display with KSh prices</li>
+                <li><span class="check">✓</span> Shopping cart shows KSh currency</li>
+                <li><span class="check">✓</span> Gift cards page working</li>
+                <li><span class="check">✓</span> All JavaScript loading properly</li>
+                <li><span class="check">✓</span> Images displaying correctly</li>
+            </ul>
+        </div>
+        
+        <div class="button-group">
+            <a href="QUICK-TEST.html" class="btn btn-info">🧪 Run Quick Test</a>
+            <a href="wine.html" class="btn btn-primary">🍷 Open Wine Shop</a>
+            <a href="gift-cards.html" class="btn btn-secondary">🎁 Gift Packages</a>
+            <a href="admin-dashboard.html" class="btn btn-info">📊 Admin Dashboard</a>
+        </div>
+        
+        <p style="margin-top: 30px; text-align: center; color: #666; font-size: 0.9em;">
+            <strong>Note:</strong> Make sure your backend server is running for M-Pesa payments and admin features.<br>
+            Run: <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 5px;">cd backend && npm start</code>
+        </p>
+    </div>
+</body>
+</html>

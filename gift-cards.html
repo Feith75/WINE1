@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gift-cards.css">
+    <title>Gift Packages - Wine World</title>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo" onclick="window.location.href='wine.html'">🍷 WINE WORLD</div>
+            <div class="header-actions">
+                <button onclick="window.location.href='wine.html'">← Back to Shop</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="navbar">
+        <a href="wine.html#HOME">HOME</a>
+        <a href="wine.html#SHOP">SHOP</a>
+        <a href="#" class="active">GIFT</a>
+    </div>
+
+    <section class="gift-hero">
+        <h1>🎁 Complete Gift Packages</h1>
+        <p>Wine + Flowers + Card - Perfect gifts ready to send</p>
+    </section>
+
+    <section class="gift-section">
+        <h2>Choose Your Complete Package</h2>
+        <div class="gift-packages">
+            <!-- Starter Package -->
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>🌟 Starter Package</h3>
+                    <div class="package-price">KSh 3,500</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-includes">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>🍷 1 Bottle Premium Wine</li>
+                            <li>💐 Fresh Flower Bouquet</li>
+                            <li>✉️ Greeting Card</li>
+                            <li>📝 Personal Message</li>
+                            <li>🎀 Gift Wrapping</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="select-package-btn" onclick="selectPackage('starter', 3500)">Buy Starter Package</button>
+            </div>
+
+            <!-- Classic Package -->
+            <div class="package-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="package-header">
+                    <h3>💎 Classic Package</h3>
+                    <div class="package-price">KSh 4,500</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-includes">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>🍷 1 Bottle Premium Wine</li>
+                            <li>💐 Deluxe Flower Arrangement</li>
+                            <li>✉️ Premium Greeting Card</li>
+                            <li>📝 Personal Message</li>
+                            <li>🎀 Luxury Gift Wrapping</li>
+                            <li>🎁 Gift Box</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="select-package-btn" onclick="selectPackage('classic', 4500)">Buy Classic Package</button>
+            </div>
+
+            <!-- Premium Package -->
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>👑 Premium Package</h3>
+                    <div class="package-price">KSh 8,000</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-includes">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>🍷 2 Bottles Premium Wine</li>
+                            <li>💐 Luxury Flower Arrangement</li>
+                            <li>✉️ Premium Greeting Card</li>
+                            <li>📝 Personal Message</li>
+                            <li>🎀 Luxury Gift Wrapping</li>
+                            <li>🎁 Premium Gift Box</li>
+                            <li>🚚 Free Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="select-package-btn" onclick="selectPackage('premium', 8000)">Buy Premium Package</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMessageModal()">&times;</span>
+            <h2>✉️ Complete Your Gift Package</h2>
+            
+            <div class="selected-package-info">
+                <h3 id="selectedPackageName">Starter Package</h3>
+                <p class="package-total">Total: <span id="selectedPackagePrice">KSh 3,500</span></p>
+            </div>
+
+            <form id="giftMessageForm">
+                <div class="form-section">
+                    <h3>Recipient Information</h3>
+                    <div class="form-group">
+                        <label for="recipientName">Recipient Name *</label>
+                        <input type="text" id="recipientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipientPhone">Recipient Phone *</label>
+                        <input type="tel" id="recipientPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipientAddress">Delivery Address *</label>
+                        <textarea id="recipientAddress" rows="2" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Card Message</h3>
+                    <div class="form-group">
+                        <label for="cardMessage">Write your message for the greeting card *</label>
+                        <textarea id="cardMessage" rows="4" placeholder="Write your personal message here..." required></textarea>
+                        <small>This message will be written on the greeting card</small>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Your Information</h3>
+                    <div class="form-group">
+                        <label for="senderName">Your Name *</label>
+                        <input type="text" id="senderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senderPhone">Your Phone *</label>
+                        <input type="tel" id="senderPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senderEmail">Your Email *</label>
+                        <input type="email" id="senderEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Delivery Date</h3>
+                    <div class="form-group">
+                        <label for="deliveryDate">When should we deliver? *</label>
+                        <input type="date" id="deliveryDate" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Payment Method</h3>
+                    <div class="form-group">
+                        <select id="paymentMethod" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="mpesa">M-Pesa</option>
+                            <option value="card">Credit/Debit Card</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="mpesaGroup" style="display: none;">
+                        <label for="mpesaNumber">M-Pesa Number *</label>
+                        <input type="tel" id="mpesaNumber" placeholder="e.g., 0712345678">
+                    </div>
+                </div>
+
+                <button type="submit" class="complete-btn">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="gift-cards.js"></script>
+</body>
+</html>

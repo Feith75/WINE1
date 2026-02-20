@@ -1,0 +1,105 @@
+🍷 WINE WORLD - HOW TO USE YOUR SHOP
+=====================================
+
+✅ ALL ISSUES FIXED!
+- Wine products now show with KSh prices
+- Shopping cart displays KSh currency
+- Gift cards page is working
+- All JavaScript files loading properly
+- Images displaying correctly
+
+📂 HOW TO OPEN THE SHOP:
+========================
+
+OPTION 1 - EASIEST (Recommended):
+1. Double-click "OPEN-ME-FIRST.html" in your folder
+2. Click the button for the page you want to visit
+
+OPTION 2 - Direct Access:
+1. Double-click "wine.html" to open the main shop
+2. Or double-click "gift-cards.html" for gift cards
+3. Or double-click "admin-dashboard.html" for admin panel
+
+🛒 MAIN FEATURES:
+=================
+
+1. WINE SHOP (wine.html):
+   - Browse 12 premium wines
+   - Filter by category (Red, White, Rosé, Sparkling)
+   - Filter by price range
+   - Search for wines
+   - Add to cart
+   - View cart and checkout
+   - Create account / Login
+   - Book events (Wine Tasting, Parties, Festivals)
+   - Join Wine Club (Silver, Gold, Platinum)
+
+2. GIFT CARDS (gift-cards.html):
+   - Select gift card amount (KSh 2,500 - 20,000 or custom)
+   - Click "Select" on any amount
+   - You'll be taken to cards & flowers page
+   - Choose greeting card (optional)
+   - Choose flowers (optional)
+   - Proceed to checkout
+
+3. ADMIN DASHBOARD (admin-dashboard.html):
+   - View all orders
+   - View event bookings
+   - View gift card purchases
+   - View wine club members
+   - Requires backend server running
+
+💻 BACKEND SERVER (For M-Pesa & Admin Features):
+================================================
+
+To start the backend server:
+1. Open Command Prompt (CMD)
+2. Navigate to your folder:
+   cd C:\Users\digit\OneDrive\Pictures\Documents\wine1
+3. Go to backend folder:
+   cd backend
+4. Start server:
+   npm start
+
+The server will run on: http://localhost:5000
+
+⚠️ IMPORTANT NOTES:
+===================
+
+1. Frontend (HTML pages) - NO npm needed!
+   - Just double-click HTML files to open in browser
+   - All JavaScript loads automatically
+
+2. Backend (Node.js server) - npm needed only for:
+   - M-Pesa payments
+   - Admin dashboard data
+   - Saving orders to MongoDB
+
+3. If you see "cannot reach page":
+   - Make sure you're opening HTML files (not trying to run npm in root folder)
+   - Right-click HTML file → Open with → Your browser
+
+4. All prices are in KSh (Kenya Shillings)
+
+🎯 QUICK TEST:
+==============
+
+1. Open OPEN-ME-FIRST.html
+2. Click "Open Wine Shop"
+3. You should see 12 wines with prices like "KSh 299.99"
+4. Click "Add to Cart" on any wine
+5. Click cart icon (top right)
+6. You should see your cart with KSh prices
+
+If you see all of this, everything is working! 🎉
+
+📞 NEED HELP?
+=============
+
+If something doesn't work:
+1. Make sure you're opening HTML files directly (double-click)
+2. Don't run "npm start" in the root folder (only in backend folder)
+3. Check browser console for errors (F12 key)
+4. Make sure all files are in the correct folder
+
+Enjoy your Wine World shop! 🍷✨

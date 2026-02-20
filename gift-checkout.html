@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Gift Card Checkout - Wine World</title>
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: #2a1515;
+            border-radius: 10px;
+            border: 2px solid #5c0000;
+        }
+        .checkout-container h1 {
+            color: #c90000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .order-summary {
+            background: #1a0f0f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .order-summary h2 {
+            color: #c90000;
+            margin-bottom: 15px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #5c0000;
+            color: #f0f0f0;
+        }
+        .summary-total {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c90000;
+            margin-top: 15px;
+            text-align: right;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section h3 {
+            color: #c90000;
+            margin-bottom: 15px;
+        }
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #c90000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .complete-btn:hover {
+            background: #a00000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo" onclick="window.location.href='wine.html'">🍷 WINE WORLD</div>
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        <h1>Complete Your Gift Purchase</h1>
+        
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="orderSummary"></div>
+            <div class="summary-total">Total: <span id="totalAmount">KSh 0</span></div>
+        </div>
+
+        <form id="checkoutForm">
+            <div class="form-section">
+                <h3>Recipient Information</h3>
+                <div class="form-group">
+                    <label for="recipientName">Recipient Name *</label>
+                    <input type="text" id="recipientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient Email *</label>
+                    <input type="email" id="recipientEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryDate">Delivery Date *</label>
+                    <input type="date" id="deliveryDate" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Your Information</h3>
+                <div class="form-group">
+                    <label for="senderName">Your Name *</label>
+                    <input type="text" id="senderName" required>
+                </div>
+                <div class="form-group">
+                    <label for="senderEmail">Your Email *</label>
+                    <input type="email" id="senderEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="senderPhone">Your Phone *</label>
+                    <input type="tel" id="senderPhone" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Personal Message (Optional)</h3>
+                <div class="form-group">
+                    <textarea id="giftMessage" rows="4" placeholder="Add a personal message..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Payment Method</h3>
+                <div class="form-group">
+                    <select id="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="mpesa">M-Pesa</option>
+                        <option value="card">Credit/Debit Card</option>
+                    </select>
+                </div>
+                <div class="form-group" id="mpesaGroup" style="display: none;">
+                    <label for="mpesaNumber">M-Pesa Number *</label>
+                    <input type="tel" id="mpesaNumber" placeholder="e.g., 0712345678">
+                </div>
+            </div>
+
+            <button type="submit" class="complete-btn">Complete Purchase</button>
+        </form>
+    </div>
+
+    <script>
+        const giftOrder = JSON.parse(localStorage.getItem('giftOrder'));
+
+        if (!giftOrder) {
+            alert('No order found. Redirecting to gift cards page...');
+            window.location.href = 'gift-cards.html';
+        }
+
+        // Display order summary
+        let summaryHTML = '';
+        let total = 0;
+        
+        // Add package
+        if (giftOrder.package) {
+            summaryHTML += `<div class="summary-item">
+                <span>${giftOrder.package.name}</span>
+                <span>KSh ${giftOrder.package.giftCardAmount.toLocaleString()}</span>
+            </div>`;
+            total += giftOrder.package.giftCardAmount;
+        }
+        
+        // Add single item (from Buy button)
+        if (giftOrder.item) {
+            summaryHTML += `<div class="summary-item">
+                <span>${giftOrder.item.name}</span>
+                <span>KSh ${giftOrder.item.price.toLocaleString()}</span>
+            </div>`;
+            total += giftOrder.item.price;
+        }
+        
+        // Add cart items (from Add to Cart)
+        if (giftOrder.items && giftOrder.items.length > 0) {
+            giftOrder.items.forEach(item => {
+                summaryHTML += `<div class="summary-item">
+                    <span>${item.name}</span>
+                    <span>KSh ${item.price.toLocaleString()}</span>
+                </div>`;
+                total += item.price;
+            });
+        }
+        
+        document.getElementById('orderSummary').innerHTML = summaryHTML;
+        document.getElementById('totalAmount').textContent = `KSh ${total.toLocaleString()}`;
+
+        // Payment method toggle
+        document.getElementById('paymentMethod').addEventListener('change', (e) => {
+            const mpesaGroup = document.getElementById('mpesaGroup');
+            const mpesaInput = document.getElementById('mpesaNumber');
+            if (e.target.value === 'mpesa') {
+                mpesaGroup.style.display = 'block';
+                mpesaInput.required = true;
+            } else {
+                mpesaGroup.style.display = 'none';
+                mpesaInput.required = false;
+            }
+        });
+
+        // Form submission
+        document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                ...giftOrder,
+                recipientName: document.getElementById('recipientName').value,
+                recipientEmail: document.getElementById('recipientEmail').value,
+                deliveryDate: document.getElementById('deliveryDate').value,
+                senderName: document.getElementById('senderName').value,
+                senderEmail: document.getElementById('senderEmail').value,
+                senderPhone: document.getElementById('senderPhone').value,
+                message: document.getElementById('giftMessage').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                mpesaNumber: document.getElementById('mpesaNumber').value
+            };
+
+            // Validate delivery date
+            const selectedDate = new Date(formData.deliveryDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate < today) {
+                alert('Please select a future delivery date');
+                return;
+            }
+
+            if (formData.paymentMethod === 'mpesa') {
+                const proceed = confirm('📱 M-Pesa Payment\n\nA payment request will be sent to your phone.\nPlease have your phone ready to enter your M-Pesa PIN.\n\nClick OK to proceed with payment.');
+                if (!proceed) return;
+            }
+
+            alert(`Gift Purchase Confirmed! 🎁\n\nAmount: KSh ${total.toLocaleString()}\nRecipient: ${formData.recipientName}\nEmail: ${formData.recipientEmail}\nDelivery Date: ${formData.deliveryDate}\n\nThe gift will be sent to ${formData.recipientEmail} on ${formData.deliveryDate}.\n\nThank you for choosing Wine World!`);
+
+            localStorage.removeItem('giftOrder');
+            localStorage.removeItem('selectedPackage');
+            window.location.href = 'wine.html';
+        });
+    </script>
+</body>
+</html>
