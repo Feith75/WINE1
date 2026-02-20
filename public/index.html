@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine World - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #667eea;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .info h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        .info ul {
+            list-style-position: inside;
+            color: #666;
+        }
+        .info li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍷 Welcome to Wine World</h1>
+        <p>Your premium wine e-commerce platform is ready!</p>
+        
+        <div class="info">
+            <h3>✨ Features Available:</h3>
+            <ul>
+                <li>Browse 12 premium wines (Red, White, Rosé, Sparkling)</li>
+                <li>Shopping cart with localStorage</li>
+                <li>User authentication (Login/Register)</li>
+                <li>Event booking (Wine Tasting, Parties, Festivals)</li>
+                <li>Wine Club membership (Silver, Gold, Platinum)</li>
+                <li>Gift packages with cards and flowers</li>
+                <li>M-Pesa payment integration</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>🚀 Quick Start:</h3>
+            <ul>
+                <li>Click "Enter Shop" to browse wines</li>
+                <li>Click "Gift Packages" for gift options</li>
+                <li>Backend runs on port 5000 (start with: cd backend && npm start)</li>
+            </ul>
+        </div>
+
+        <a href="wine.html" class="btn">🛍️ Enter Shop</a>
+        <a href="gift-cards.html" class="btn">🎁 Gift Packages</a>
+    </div>
+</body>
+</html>

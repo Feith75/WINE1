@@ -2,7 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const path = require('path');
+
+// Load environment variables from backend/.env when running locally
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 
@@ -12,7 +15,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI ;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/wine-shop';
+
+if (!process.env.MONGODB_URI) {
+    console.warn('⚠️  MONGODB_URI not set in environment — falling back to local MongoDB.');
+    console.warn('If deploying to Vercel, set `MONGODB_URI` in Project → Settings → Environment Variables.');
+}
+
 mongoose.connect(MONGODB_URI)
     .then(() => console.log('✅ Connected to MongoDB'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
