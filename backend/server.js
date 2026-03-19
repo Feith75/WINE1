@@ -307,7 +307,12 @@ app.get('/api/dashboard/stats', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-});
+// Export for Vercel serverless; also listen locally
+if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;

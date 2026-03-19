@@ -1,4 +1,5 @@
 # Environment variables
+# Environment files
 .env
 backend/.env
 
@@ -15,7 +16,7 @@ logs/
 .DS_Store
 Thumbs.db
 
-# IDE
+# IDE / Editor
 .vscode/
 .idea/
 *.swp
@@ -25,27 +26,21 @@ Thumbs.db
 dist/
 build/
 
-# Temporary files
+# Temporary / backup / test files
 *.tmp
 *.temp
-
-# Database
-*.db
-*.sqlite
-
-# Backup files
 *-backup.html
 wine-backup.html
 wine-clean.html
 wine-fresh.html
-
-# Test files
 debug.html
 test.html
 test-navbar.html
 CHECK-THIS.html
 QUICK-TEST.html
+
+# Example and setup files
 .env.example
-ENVIRONMENT -SETUP.md
+ENVIRONMENT-SETUP.md
 backend/.env.example
 backend/ENVIRONMENT-SETUP.md
