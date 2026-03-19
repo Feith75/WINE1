@@ -47,3 +47,7 @@ CHECK-THIS.html
 QUICK-TEST.html
 package-lock.json
 .env.example
+ENVIRONMENT -SETUP.md
+backend/.env.example
+backend/ENVIRONMENT-SETUP.md
+backend/mpesa.js

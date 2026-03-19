@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/wine-shop';
+const MONGODB_URI = process.env.MONGODB_URI  ;
 
 if (!process.env.MONGODB_URI) {
     console.warn('⚠️  MONGODB_URI not set in environment — falling back to local MongoDB.');
