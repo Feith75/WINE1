@@ -8,7 +8,7 @@ class ProductModel {
                 name: 'Cabernet Sauvignon Reserve',
                 category: 'red',
                 price: 8500,
-                image: 'vlad-zaytsev-sO26ESssFdE-unsplash.jpg',
+                image: 'assets/vlad-zaytsev-sO26ESssFdE-unsplash.jpg',
                 description: 'Full-bodied with rich dark fruit flavors'
             },
             {
@@ -16,7 +16,7 @@ class ProductModel {
                 name: 'Merlot Classic',
                 category: 'red',
                 price: 6500,
-                image: 'stefan-johnson-xIFbDeGcy44-unsplash.jpg',
+                image: 'assets/stefan-johnson-xIFbDeGcy44-unsplash.jpg',
                 description: 'Smooth and velvety with plum notes'
             },
             {
@@ -24,7 +24,7 @@ class ProductModel {
                 name: 'Pinot Noir Estate',
                 category: 'red',
                 price: 9500,
-                image: 't-ed-hOgog7l-iuY-unsplash.jpg',
+                image: 'assets/t-ed-hOgog7l-iuY-unsplash.jpg',
                 description: 'Elegant with cherry and earthy undertones'
             },
             // White Wines
@@ -33,7 +33,7 @@ class ProductModel {
                 name: 'Chardonnay Reserve',
                 category: 'white',
                 price: 7500,
-                image: 'valentin-lacoste-4eyAy57ObtQ-unsplash.jpg',
+                image: 'assets/valentin-lacoste-4eyAy57ObtQ-unsplash.jpg',
                 description: 'Buttery with hints of vanilla and oak'
             },
             {
@@ -41,7 +41,7 @@ class ProductModel {
                 name: 'Sauvignon Blanc',
                 category: 'white',
                 price: 5500,
-                image: 'nathan-andress-XCdC4ph1P9g-unsplash.jpg',
+                image: 'assets/nathan-andress-XCdC4ph1P9g-unsplash.jpg',
                 description: 'Crisp and refreshing with citrus notes'
             },
             {
@@ -49,7 +49,7 @@ class ProductModel {
                 name: 'Riesling',
                 category: 'white',
                 price: 6000,
-                image: 'melanie-lim-0oPK0sG3CQU-unsplash.jpg',
+                image: 'assets/melanie-lim-0oPK0sG3CQU-unsplash.jpg',
                 description: 'Sweet and aromatic with floral hints'
             },
             // Rosé Wines
@@ -58,7 +58,7 @@ class ProductModel {
                 name: 'Provence Rosé',
                 category: 'rose',
                 price: 7000,
-                image: 'jacob-le-1BuJoMJ6ZBk-unsplash.jpg',
+                image: 'assets/jacob-le-1BuJoMJ6ZBk-unsplash.jpg',
                 description: 'Light and fruity with strawberry notes'
             },
             {
@@ -66,7 +66,7 @@ class ProductModel {
                 name: 'Rosé d\'Anjou',
                 category: 'rose',
                 price: 5800,
-                image: 'ankita-gupta-vk-KlS1wYMY-unsplash.jpg',
+                image: 'assets/ankita-gupta-vk-KlS1wYMY-unsplash.jpg',
                 description: 'Delicate and refreshing summer wine'
             },
             // Sparkling Wines
@@ -75,7 +75,7 @@ class ProductModel {
                 name: 'Champagne Brut',
                 category: 'sparkling',
                 price: 12000,
-                image: 'vlad-zaytsev-sO26ESssFdE-unsplash.jpg',
+                image: 'assets/vlad-zaytsev-sO26ESssFdE-unsplash.jpg',
                 description: 'Elegant bubbles with toasted brioche'
             },
             {
@@ -83,7 +83,7 @@ class ProductModel {
                 name: 'Prosecco',
                 category: 'sparkling',
                 price: 4500,
-                image: 'stefan-johnson-xIFbDeGcy44-unsplash.jpg',
+                image: 'assets/stefan-johnson-xIFbDeGcy44-unsplash.jpg',
                 description: 'Light and fruity Italian sparkler'
             },
             {
@@ -91,7 +91,7 @@ class ProductModel {
                 name: 'Cava Reserva',
                 category: 'sparkling',
                 price: 6800,
-                image: 't-ed-hOgog7l-iuY-unsplash.jpg',
+                image: 'assets/t-ed-hOgog7l-iuY-unsplash.jpg',
                 description: 'Spanish sparkler with fine bubbles'
             },
             {
@@ -99,7 +99,7 @@ class ProductModel {
                 name: 'Moscato d\'Asti',
                 category: 'sparkling',
                 price: 5200,
-                image: 'valentin-lacoste-4eyAy57ObtQ-unsplash.jpg',
+                image: 'assets/valentin-lacoste-4eyAy57ObtQ-unsplash.jpg',
                 description: 'Sweet and lightly sparkling dessert wine'
             }
         ];
