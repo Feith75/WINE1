@@ -1,46 +1,18 @@
-# Environment variables
-# Environment files
+# Dependencies
+node_modules/
+
+# Environment variables - NEVER commit these
 .env
 backend/.env
 
-# Dependencies
-node_modules/
-backend/node_modules/
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
 *.log
 npm-debug.log*
-logs/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE / Editor
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# Build files
-dist/
-build/
-
-# Temporary / backup / test files
-*.tmp
-*.temp
-*-backup.html
-wine-backup.html
-wine-clean.html
-wine-fresh.html
-debug.html
-test.html
-test-navbar.html
-CHECK-THIS.html
-QUICK-TEST.html
-
-# Example and setup files
-.env.example
-ENVIRONMENT-SETUP.md
-backend/.env.example
-backend/ENVIRONMENT-SETUP.md
