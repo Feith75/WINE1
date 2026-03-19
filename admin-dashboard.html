@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine World - Admin Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #1a0f0f; color: #f0f0f0; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        h1 { color: #c90000; margin-bottom: 30px; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .stat-card { background: #2a1515; padding: 20px; border-radius: 8px; border: 2px solid #5c0000; text-align: center; }
+        .stat-number { font-size: 36px; color: #c90000; font-weight: bold; }
+        .stat-label { color: #c0c0c0; margin-top: 10px; }
+        .section { background: #2a1515; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #5c0000; }
+        .section h2 { color: #c90000; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #5c0000; }
+        th { background: #3d0000; color: #ffffff; }
+        tr:hover { background: #1a0f0f; }
+        .status { padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .status-pending { background: #ff9800; color: #000; }
+        .status-confirmed { background: #4caf50; color: #fff; }
+        .status-active { background: #2196f3; color: #fff; }
+        .refresh-btn { background: #c90000; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 20px; }
+        .refresh-btn:hover { background: #a00000; }
+        .error { color: #ff5252; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍷 Wine World - Admin Dashboard</h1>
+        
+        <button class="refresh-btn" onclick="loadDashboard()">🔄 Refresh Data</button>
+        
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalBookings">-</div>
+                <div class="stat-label">Event Bookings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalOrders">-</div>
+                <div class="stat-label">Orders</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalGiftCards">-</div>
+                <div class="stat-label">Gift Cards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalMembers">-</div>
+                <div class="stat-label">Wine Club Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalUsers">-</div>
+                <div class="stat-label">Registered Users</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recent Event Bookings</h2>
+            <table id="bookingsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Guests</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingsBody"></tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Recent Orders</h2>
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Items</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody"></tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>All Gift Cards</h2>
+            <table id="giftCardsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Code</th>
+                        <th>Amount</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Recipient Email</th>
+                        <th>Delivery Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="giftCardsBody"></tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Wine Club Members</h2>
+            <table id="membersTable">
+                <thead>
+                    <tr>
+                        <th>Joined</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Plan</th>
+                        <th>Monthly Fee</th>
+                        <th>Next Billing</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="membersBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+
+        async function loadDashboard() {
+            try {
+                // Load stats
+                const statsRes = await fetch(`${API_URL}/dashboard/stats`);
+                const statsData = await statsRes.json();
+                
+                if (statsData.success) {
+                    document.getElementById('totalBookings').textContent = statsData.stats.totalBookings;
+                    document.getElementById('totalOrders').textContent = statsData.stats.totalOrders;
+                    document.getElementById('totalGiftCards').textContent = statsData.stats.totalGiftCards;
+                    document.getElementById('totalMembers').textContent = statsData.stats.totalMembers;
+                    document.getElementById('totalUsers').textContent = statsData.stats.totalUsers;
+                    
+                    displayBookings(statsData.recent.bookings);
+                    displayOrders(statsData.recent.orders);
+                }
+
+                // Load all gift cards
+                const giftCardsRes = await fetch(`${API_URL}/gift-cards`);
+                const giftCardsData = await giftCardsRes.json();
+                if (giftCardsData.success) {
+                    displayGiftCards(giftCardsData.giftCards);
+                }
+
+                // Load all members
+                const membersRes = await fetch(`${API_URL}/wine-club`);
+                const membersData = await membersRes.json();
+                if (membersData.success) {
+                    displayMembers(membersData.members);
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                alert('Error connecting to server. Make sure the backend is running on port 5000.');
+            }
+        }
+
+        function displayBookings(bookings) {
+            const tbody = document.getElementById('bookingsBody');
+            tbody.innerHTML = bookings.map(b => `
+                <tr>
+                    <td>${new Date(b.createdAt).toLocaleDateString()}</td>
+                    <td>${b.eventName}</td>
+                    <td>${b.name}</td>
+                    <td>${b.email}</td>
+                    <td>${b.phone}</td>
+                    <td>${b.guests}</td>
+                    <td>KSh ${b.totalAmount?.toLocaleString() || 'N/A'}</td>
+                    <td>${b.paymentMethod}</td>
+                    <td><span class="status status-${b.status}">${b.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function displayOrders(orders) {
+            const tbody = document.getElementById('ordersBody');
+            tbody.innerHTML = orders.map(o => `
+                <tr>
+                    <td>${new Date(o.createdAt).toLocaleDateString()}</td>
+                    <td>${o.customerName}</td>
+                    <td>${o.customerEmail}</td>
+                    <td>${o.customerPhone}</td>
+                    <td>${o.items?.length || 0} items</td>
+                    <td>KSh ${o.totalAmount?.toLocaleString() || 'N/A'}</td>
+                    <td>${o.paymentMethod}</td>
+                    <td><span class="status status-${o.status}">${o.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function displayGiftCards(giftCards) {
+            const tbody = document.getElementById('giftCardsBody');
+            tbody.innerHTML = giftCards.map(g => `
+                <tr>
+                    <td>${new Date(g.createdAt).toLocaleDateString()}</td>
+                    <td>${g.code}</td>
+                    <td>KSh ${g.amount.toLocaleString()}</td>
+                    <td>${g.senderName}</td>
+                    <td>${g.recipientName}</td>
+                    <td>${g.recipientEmail}</td>
+                    <td>${new Date(g.deliveryDate).toLocaleDateString()}</td>
+                    <td><span class="status status-${g.status}">${g.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function displayMembers(members) {
+            const tbody = document.getElementById('membersBody');
+            tbody.innerHTML = members.map(m => `
+                <tr>
+                    <td>${new Date(m.joinedAt).toLocaleDateString()}</td>
+                    <td>${m.name}</td>
+                    <td>${m.email}</td>
+                    <td>${m.phone}</td>
+                    <td>${m.plan.toUpperCase()}</td>
+                    <td>KSh ${m.monthlyFee.toLocaleString()}</td>
+                    <td>${new Date(m.nextBillingDate).toLocaleDateString()}</td>
+                    <td><span class="status status-${m.status}">${m.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // Load dashboard on page load
+        loadDashboard();
+    </script>
+</body>
+</html>
