@@ -1,6 +1,6 @@
 // API Configuration
 const API_CONFIG = {
-    BASE_URL: 'http://localhost:5000/api',
+    BASE_URL: window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api',
     ENDPOINTS: {
         BOOKINGS: '/bookings',
         ORDERS: '/orders',
